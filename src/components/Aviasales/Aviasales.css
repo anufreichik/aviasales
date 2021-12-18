@@ -1,0 +1,37 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 230px 500px;
+    /*grid-auto-rows: minmax(150px, auto);*/
+    grid-gap: 20px;
+    justify-items: stretch;
+    align-items: stretch;
+    justify-content: center;
+    align-content:start;
+}
+
+.logo-panel{
+    grid-column:1/-1;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.btn_show_more
+{
+    width:100%;
+    background:#2196f3;
+    color:#ffffff;
+    border: 1px solid #dfe5ec;
+    border-radius: 5px;
+    padding: 15px;
+    font-family: Open Sans, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+

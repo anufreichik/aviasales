@@ -1,26 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Layout from './components/Layout/Layout';
+import Aviasales from "./components/Aviasales/Aviasales";
+import {ISearchID} from "./types/types";
+import useApi from "./utils/useApi";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [results, loading, isError, refresh] = useApi<ISearchID>(`https://front-test.beta.aviasales.ru/search`);
+
+    return (
+        <Layout>
+            {results?.searchId && <Aviasales searchID={results?.searchId ? results?.searchId : ''}/>}
+        </Layout>
+    );
 }
 
 export default App;

@@ -1,0 +1,10 @@
+
+.container_layout{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width:1200px;
+    background-color:#F3F7FA;
+    margin-left: auto;
+    margin-right: auto;
+}
