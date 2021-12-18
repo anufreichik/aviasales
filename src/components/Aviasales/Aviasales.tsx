@@ -25,6 +25,8 @@ const Aviasales: React.FC<IProps> = ({searchID}) => {
             '1 stop',
             '2 stops',
             '3 stops'])
+    const [sort, setSort]=useState('time');
+
     const PAGE_SIZE = 5;
 
 
@@ -71,10 +73,25 @@ const Aviasales: React.FC<IProps> = ({searchID}) => {
 
     }, [filters])
 
+    useEffect(() => {
+       const sorted = [...displayTickets].sort(handleSort);
+       setDisplayTickets(sorted);
+    }, [sort]);
+
+
     const paginate = () => {
         setStartIndex(prev => prev + PAGE_SIZE + 1);
     }
 
+    const handleSort = (ticketA:ITicket, ticketB:ITicket)=>{
+        if(sort==='price'){
+            return ticketA.price - ticketB.price;
+        }
+        else{
+            return 0;//TODO calculate total flight time for both ticket (normal and return) and compare
+        }
+
+    }
     const handleFilter = (ticket: ITicket) => {
         const stops = filters.filter(item=>item!=='all').map(el=>{
             switch (el){
@@ -109,7 +126,7 @@ const Aviasales: React.FC<IProps> = ({searchID}) => {
                 <FiltersList setFilters={setFilters} filters={filters}/>
             </div>
             <div className='right-panel'>
-                <TicketTypes/>
+                <TicketTypes setSort={setSort}/>
                 {endSearch && <h2>No More Tickets</h2>}
                 <TicketsList tickets={displayTickets}/>
                 <button onClick={paginate} className='btn_show_more'>Show {PAGE_SIZE} more tickets!</button>
