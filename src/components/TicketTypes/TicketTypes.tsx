@@ -8,20 +8,20 @@ interface IProps {
 const TicketTypes:React.FC<IProps> =({setSort}) =>{
     const [sortParam, setSortParam] =useState('time');
 
-    const handleSort=(sortType:string)=>{
+    const changeSortType=(sortType:string)=>{
         setSort(sortType);
     }
     return (
         <div className='ticket_type_container' >
             <button className='sort_button sort_button_left'
-                onClick={() => handleSort('price')}
+                onClick={() => changeSortType('price')}
 
                 //active={sortParam === 'price'}
             >
                 Cheapest
             </button>
             <button className='sort_button sort_button_right'
-                onClick={() => handleSort('time')}
+                onClick={() => changeSortType('time')}
                 //active={sortParam === 'time'}
             >
                 Fastest

@@ -88,7 +88,9 @@ const Aviasales: React.FC<IProps> = ({searchID}) => {
             return ticketA.price - ticketB.price;
         }
         else{
-            return 0;//TODO calculate total flight time for both ticket (normal and return) and compare
+           const ticketATotal =  ticketA.segments.reduce((total, cur)=>total+cur.duration,0);
+            const ticketBTotal =  ticketB.segments.reduce((total, cur)=>total+cur.duration,0);
+            return ticketATotal  - ticketBTotal;
         }
 
     }
